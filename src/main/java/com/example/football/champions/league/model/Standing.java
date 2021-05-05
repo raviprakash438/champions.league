@@ -14,4 +14,5 @@ public class Standing implements Serializable {
     private int team_id;
     private String team_name;
     private int overall_league_position;
+    private String team_badge;
 }

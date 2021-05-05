@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fifa")
+@CrossOrigin
 @Slf4j
 public class FootballController {
 
@@ -27,13 +28,13 @@ public class FootballController {
         return footballService.getCountries();
     }
 
-    @GetMapping("/leagues/country/{id}")
+    @GetMapping("/country/{id}/leagues")
     public List<League> getLeagues(@PathVariable int id) {
         log.info("In Football controller getLeagues method.");
         return footballService.getLeagues(id);
     }
 
-    @GetMapping("leagues/{id}")
+    @GetMapping("league/{id}/teams")
     public List<Team> getTeams(@PathVariable int id) {
         log.info("In Football controller getTeams method.");
         return footballService.getTeams(id);

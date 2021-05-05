@@ -65,17 +65,17 @@ public class FootballService {
 
     }
 
-    public List<Standing> getStanding(int id, int team_id, String country_name) {
+    public List<Standing> getStanding(int league_id, int team_id, String country_name) {
         log.info("In league service method.");
-        String standingUrl = uri + "?action=get_standings&league_id=" + id + "&APIkey=" + apiKey;
+        String standingUrl = uri + "?action=get_standings&league_id=" + league_id + "&APIkey=" + apiKey;
 
         ResponseEntity<Standing[]> response = restTemplate.getForEntity(standingUrl, Standing[].class);
         List<Standing> standingList = Arrays.asList(response.getBody());
-        log.info("count before filter --> "+ standingList.size());
+        log.info("count before filter --> " + standingList.size());
         standingList = standingList.stream().filter(standing ->
-                standing.getTeam_id()==team_id  &&
-                standing.getCountry_name().equalsIgnoreCase(country_name)).collect(Collectors.toList());
-        log.info("count after filter --> "+ standingList.size());
+                standing.getTeam_id() == team_id &&
+                        standing.getCountry_name().equalsIgnoreCase(country_name)).collect(Collectors.toList());
+        log.info("count after filter --> " + standingList.size());
         return standingList;
     }
 }
