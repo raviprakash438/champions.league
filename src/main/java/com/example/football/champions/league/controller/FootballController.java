@@ -20,7 +20,6 @@ public class FootballController {
     @Autowired
     FootballService footballService;
 
-    @Autowired
 
     @GetMapping("/countries")
     public List<Country> getCountries() {
